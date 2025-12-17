@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Portable ECG Monitor</title>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<style>
+body {
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #edf2f6;
+}
+header {
+    background: #0b3c5d;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+button {
+    padding: 8px 14px;
+    margin-left: 6px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.shutdown { background: #b00020; color: white; }
+.reset { background: #ff9800; }
+.report { background: #2e7d32; color: white; }
+
+.container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    height: calc(100vh - 60px);
+}
+
+.left {
+    padding: 15px;
+}
+.right {
+    background: #ffffff;
+    border-left: 1px solid #ccc;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+#ecgChart, #bpmChart {
+    width: 100%;
+    background: white;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.event {
+    padding: 8px;
+    margin-bottom: 8px;
+    border-left: 4px solid #0b3c5d;
+    background: #eef3f7;
+    border-radius: 3px;
+    font-weight: 500;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div><strong>BPM:</strong> <span id="bpm">--</span></div>
+    <div>
+        <button class="report" onclick="location.href='/report'">Download Report</button>
+        <button class="reset" onclick="fetch('/reset',{method:'POST'})">Reset</button>
+        <button class="shutdown" onclick="fetch('/shutdown',{method:'POST'})">Shutdown</button>
+    </div>
+</header>
+
+<div class="container">
+    <div class="left">
+        <div id="ecgChart" style="height: 350px;"></div>
+        <div id="bpmChart" style="height: 150px;"></div>
+    </div>
+    <div class="right">
+        <h3>Events</h3>
+        <div id="events"></div>
+    </div>
+</div>
+
+<script>
+let ecgTrace = {
+    y: [],
+    type: 'scatter',
+    mode: 'lines',
+    line: {color: 'blue', width: 1}
+};
+
+let bpmTrace = {
+    y: [],
+    type: 'scatter',
+    mode: 'lines',
+    line: {color: 'red', width: 2}
+};
+
+Plotly.newPlot('ecgChart', [ecgTrace], {margin:{t:20, b:30}});
+Plotly.newPlot('bpmChart', [bpmTrace], {margin:{t:20, b:30}});
+
+function update() {
+    fetch("/data").then(r => r.json()).then(d => {
+        document.getElementById("bpm").innerText = d.bpm;
+
+        Plotly.update('ecgChart', {y:[d.ecg]}, {}, [0]);
+        Plotly.update('bpmChart', {y:[d.bpm_history]}, {}, [0]);
+
+        const ev = document.getElementById("events");
+        ev.innerHTML = "";
+        d.events.forEach(e => {
+            const div = document.createElement("div");
+            div.className = "event";
+            div.innerText = e;
+            ev.appendChild(div);
+        });
+    });
+}
+
+setInterval(update, 500);
+</script>
+
+</body>
+</html>
