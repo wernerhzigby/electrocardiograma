@@ -131,21 +131,10 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Werner Hohenfeldt Zigby - email@example.com  
+Werner Hohenfeldt Zigby - Wernerzigby@gmail.com  
 Project Link: [https://github.com/wernerhzigby/electrocardiograma](https://github.com/wernerhzigby/electrocardiograma)
 
----
 
-## Acknowledgments
-
-- [Choose an Open Source License](https://choosealicense.com)
-- [Img Shields](https://shields.io)
-- [Adafruit CircuitPython Libraries](https://circuitpython.org/libraries)
-- [Flask Documentation](https://flask.palletsprojects.com/)
-- [Matplotlib Documentation](https://matplotlib.org/stable/users/index.html)
-- [ReportLab User Guide](https://www.reportlab.com/docs/reportlab-userguide.pdf)
-
----
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/wernerhzigby/electrocardiograma.svg?style=for-the-badge
