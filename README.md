@@ -1,0 +1,161 @@
+# Raspberry Pi Zero ECG Data Logger
+
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![License][license-shield]][license-url]
+
+---
+
+## About The Project
+
+This project allows you to read ECG data using an ADS1115 ADC connected via I²C and display it through a Flask web interface. You can also generate PDF reports with detected events.
+
+**Features:**
+- Real-time ECG data acquisition using ADS1115
+- Flask web interface to visualize ECG data
+- Graph plotting with Matplotlib
+- PDF report generation with ReportLab
+- Compatible with Raspberry Pi Zero
+
+---
+
+## Built With
+
+- [Python](https://www.python.org/)
+- [Flask](https://flask.palletsprojects.com/)
+- [Matplotlib](https://matplotlib.org/)
+- [ReportLab](https://www.reportlab.com/docs/reportlab-userguide.pdf)
+- [Adafruit CircuitPython ADS1x15](https://github.com/adafruit/Adafruit_CircuitPython_ADS1x15)
+
+---
+
+## Getting Started
+
+Follow these instructions to set up your Raspberry Pi Zero and run the project locally.
+
+### Prerequisites
+
+- Raspberry Pi Zero (W or WH recommended)
+- ECG sensor connected via I²C
+- ADS1115 ADC module
+- Python 3.11 or higher
+
+---
+
+### Installation
+
+1. **Update your Raspberry Pi:**
+    ```bash
+    sudo apt update && sudo apt upgrade -y
+    ```
+
+2. **Enable I²C on Raspberry Pi Zero:**
+    ```bash
+    sudo raspi-config
+    ```
+    - Navigate to **Interface Options → I2C → Enable**
+    - Reboot:
+    ```bash
+    sudo reboot
+    ```
+
+3. **Install Python dependencies:**
+    ```bash
+    sudo apt install python3-pip -y
+    pip3 install -r requirements.txt
+    ```
+
+4. **Enable I²C kernel modules (if needed):**
+    ```bash
+    sudo modprobe i2c-bcm2708
+    sudo modprobe i2c-dev
+    ```
+    Verify I²C devices:
+    ```bash
+    i2cdetect -y 1
+    ```
+
+5. **Clone the repository:**
+    ```bash
+    git clone https://github.com/wernerhzigby/electrocardiograma.git
+    cd electrocardiograma
+    ```
+
+---
+
+## Usage
+
+1. Run the Flask server:
+    ```bash
+    python3 app.py
+    ```
+
+2. Open a browser on your Pi or another device in the same network:
+    ```
+    http://<raspberry-pi-ip>:5000
+    ```
+
+3. View real-time ECG graphs and generate PDF reports.
+
+---
+
+## Roadmap
+
+- [x] Real-time ECG acquisition
+- [x] Flask web interface
+- [x] PDF report generation
+- [ ] Add automatic event detection flags
+- [ ] Add mobile-friendly interface
+
+---
+
+## Contributing
+
+Contributions are welcome! Steps:
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a pull request
+
+---
+
+## License
+
+Distributed under the Unlicense License. See `LICENSE.txt` for more information.
+
+---
+
+## Contact
+
+Werner Hohenfeldt Zigby - email@example.com  
+Project Link: [https://github.com/wernerhzigby/electrocardiograma](https://github.com/wernerhzigby/electrocardiograma)
+
+---
+
+## Acknowledgments
+
+- [Choose an Open Source License](https://choosealicense.com)
+- [Img Shields](https://shields.io)
+- [Adafruit CircuitPython Libraries](https://circuitpython.org/libraries)
+- [Flask Documentation](https://flask.palletsprojects.com/)
+- [Matplotlib Documentation](https://matplotlib.org/stable/users/index.html)
+- [ReportLab User Guide](https://www.reportlab.com/docs/reportlab-userguide.pdf)
+
+---
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[contributors-shield]: https://img.shields.io/github/contributors/wernerhzigby/electrocardiograma.svg?style=for-the-badge
+[contributors-url]: https://github.com/wernerhzigby/electrocardiograma/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/wernerhzigby/electrocardiograma.svg?style=for-the-badge
+[forks-url]: https://github.com/wernerhzigby/electrocardiograma/network/members
+[stars-shield]: https://img.shields.io/github/stars/wernerhzigby/electrocardiograma.svg?style=for-the-badge
+[stars-url]: https://github.com/wernerhzigby/electrocardiograma/stargazers
+[issues-shield]: https://img.shields.io/github/issues/wernerhzigby/electrocardiograma.svg?style=for-the-badge
+[issues-url]: https://github.com/wernerhzigby/electrocardiograma/issues
+[license-shield]: https://img.shields.io/github/license/wernerhzigby/electrocardiograma.svg?style=for-the-badge
+[license-url]: https://github.com/wernerhzigby/electrocardiograma/blob/main/LICENSE.txt
+[product-screenshot]: images/screenshot.png
