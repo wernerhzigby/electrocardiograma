@@ -61,10 +61,10 @@ Follow these instructions to set up your Raspberry Pi Zero and run the project l
     sudo reboot
     ```
 
-3. **Install Python dependencies:**
+3. **Clone the repository:**
     ```bash
-    sudo apt install python3-pip -y
-    pip3 install -r requirements.txt
+    git clone https://github.com/wernerhzigby/electrocardiograma.git
+    cd electrocardiograma
     ```
 
 4. **Enable I²C kernel modules (if needed):**
@@ -77,10 +77,10 @@ Follow these instructions to set up your Raspberry Pi Zero and run the project l
     i2cdetect -y 1
     ```
 
-5. **Clone the repository:**
+5. **Install Python dependencies:**
     ```bash
-    git clone https://github.com/wernerhzigby/electrocardiograma.git
-    cd electrocardiograma
+    sudo apt install python3-pip -y
+    pip3 install -r requirements.txt
     ```
 
 ---
@@ -106,7 +106,7 @@ Follow these instructions to set up your Raspberry Pi Zero and run the project l
 - [x] Real-time ECG acquisition
 - [x] Flask web interface
 - [x] PDF report generation
-- [ ] Add automatic event detection flags
+- [x] Add automatic event detection flags
 - [ ] Add mobile-friendly interface
 
 ---
