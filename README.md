@@ -44,7 +44,40 @@ Follow these instructions to set up your Raspberry Pi Zero and run the project l
 
 ---
 
-### Installation
+## Hardware Wiring & Assembly
+
+This project uses an **ADS1115 16-bit ADC** to read the analog ECG signal and communicate with the Raspberry Pi Zero over **I²C**.
+
+### Wiring Overview
+
+**Raspberry Pi Zero → ADS1115**
+- **3.3V (Pin 1)** → VDD  
+- **GND (Pin 6)** → GND  
+- **GPIO2 / SDA (Pin 3)** → SDA  
+- **GPIO3 / SCL (Pin 5)** → SCL  
+
+**ECG Sensor → ADS1115**
+- **ECG Signal Output** → A0  
+- **ECG GND / Reference** → GND  
+
+> The ADS1115 must be powered at **3.3V** when connected directly to the Raspberry Pi I²C bus.
+
+### Assembly Diagram
+
+The diagram below shows the complete wiring and physical connections:
+
+![ECG Wiring Diagram](electrocardiograma/assembly/ECG.drawio.png)
+
+### Notes & Safety
+
+- This project is **for educational and experimental use only**.
+- It is **not a medical device** and must not be used for diagnosis.
+- Always ensure proper isolation and grounding when working with bio-signal sensors.
+- Do **not** connect the circuit to mains-powered equipment while attached to a person.
+
+---
+
+## Installation
 
 1. **Update your Raspberry Pi:**
     ```bash
@@ -134,7 +167,7 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 Werner Hohenfeldt Zigby - Wernerzigby@gmail.com  
 Project Link: [https://github.com/wernerhzigby/electrocardiograma](https://github.com/wernerhzigby/electrocardiograma)
 
-
+---
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/wernerhzigby/electrocardiograma.svg?style=for-the-badge
@@ -147,4 +180,3 @@ Project Link: [https://github.com/wernerhzigby/electrocardiograma](https://githu
 [issues-url]: https://github.com/wernerhzigby/electrocardiograma/issues
 [license-shield]: https://img.shields.io/github/license/wernerhzigby/electrocardiograma.svg?style=for-the-badge
 [license-url]: https://github.com/wernerhzigby/electrocardiograma/blob/main/LICENSE.txt
-[product-screenshot]: images/screenshot.png
