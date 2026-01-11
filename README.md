@@ -31,6 +31,30 @@ This project allows you to read ECG data using an ADS1115 ADC connected via I²C
 
 ---
 
+## Datasheets & Technical References
+
+All component datasheets used in this project are stored locally in the **`datasheets/`** directory of this repository.  
+These documents were used during design, wiring, and software configuration.
+
+**Included datasheets:**
+- **ADS1115** – 16-bit I²C ADC electrical characteristics, gain settings, and timing
+- **ECG sensor module** – signal output range, pinout, and electrode behavior
+- **Supporting components** – any additional ICs or modules used in the signal chain
+
+### Why these datasheets matter
+- Confirm **safe voltage levels** (3.3 V logic compatibility with Raspberry Pi)
+- Understand **gain, sampling rate, and noise characteristics**
+- Reference **pinouts and timing diagrams** when modifying hardware or firmware
+
+> 📁 Location:  
+> ```
+> datasheets/
+> ```
+
+If you plan to modify the circuit, change the ADC gain, or swap ECG sensors, **consult the datasheets first** to avoid damage or incorrect readings.
+
+---
+
 ## Getting Started
 
 Follow these instructions to set up your Raspberry Pi Zero and run the project locally.
