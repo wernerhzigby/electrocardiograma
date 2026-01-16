@@ -278,8 +278,8 @@ def report():
                 pct = (c / total) * 100
                 if pct > 0:
                     concern = "Normal"
-                    if pct > 20: concern = "⚠️ Elevated"
-                    if pct > 40: concern = "❗ High"
+                    if pct > 20: concern = " Elevated!!!"
+                    if pct > 40: concern = " High!!!"
                     elements.append(Paragraph(f"{e}: {pct:.1f}% — {concern}", styles["Normal"]))
                     elements.append(Paragraph(f"Explanation: This flag indicates {e.lower()} was detected in the session. Higher percentages suggest more frequent abnormality.", styles["Italic"]))
                     elements.append(Spacer(1,6))
